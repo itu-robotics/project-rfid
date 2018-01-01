@@ -1,4 +1,4 @@
-structure = ["id","name","mail","phone","itu_id","rfid","date_entered","level","teams"]
+structure = ["id","name","mail","phone","itu_id","rfid","date_entered","level","team"]
 class Member(object):
     """ITU Robotics Member Structure"""
     def __init__(self, arg):
@@ -12,7 +12,7 @@ class Member(object):
         self.rfid = arg[5]
         self.date_entered = arg[6]
         self.level = arg[7]
-        self.teams = arg[8].split(' ')
+        self.team = arg[8].split(' ')
 
     def print_info(self):
         print "id: " + self.id
@@ -23,7 +23,7 @@ class Member(object):
         print "rfid: " + self.rfid
         print "date_entered: " + self.date_entered
         print "level: " + self.level
-        print "teams: " + str(self.teams)
+        print "team: " + str(self.team)
 
     def serialize(self):
         mails = ""
@@ -31,9 +31,9 @@ class Member(object):
             mails += mail + " "
         mails = mails[:-1]
 
-        teams = ""
-        for team in self.teams:
-            teams += team + " "
-        teams = teams[:-1]
+        team = ""
+        for team in self.team:
+            team += team + " "
+        team = team[:-1]
 
-        return self.id + "," + self.name + "," + mails + "," + self.phone + "," + self.itu_id + "," + self.rfid + "," + self.date_entered + "," + self.level + "," + teams
+        return self.id + "," + self.name + "," + mails + "," + self.phone + "," + self.itu_id + "," + self.rfid + "," + self.date_entered + "," + self.level + "," + team
