@@ -1,0 +1,28 @@
+# This file contains the member list of ITU Robotics Student Club in Istanbul Technical University.
+
+<main>
+    <member xmlns:py="http://codespeak.net/lxml/objectify/pytype" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" py:pytype="TREE">
+        <id py:pytype="str">id</id>
+        <name py:pytype="str">name</name>
+        <mail py:pytype="str">mail</mail>
+        <phone py:pytype="str">phone</phone>
+        <itu_id py:pytype="str">itu_id</itu_id>
+        <rfid py:pytype="str">rfid</rfid>
+        <date_entered py:pytype="str">date_entered</date_entered>
+        <level py:pytype="str">level</level>
+        <team py:pytype="str">team</team>
+    </member>
+
+    <member xmlns:py="http://codespeak.net/lxml/objectify/pytype" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" py:pytype="TREE">
+        <id py:pytype="str">123456</id>
+        <name py:pytype="str">Sencer Yazici</name>
+        <mail py:pytype="str">senceryazici@gmail.com</mail>
+        <phone py:pytype="str">0531XXXXXXX</phone>
+        <itu_id py:pytype="str">040160XXX</itu_id>
+        <rfid py:pytype="str">XXX-XXX-XXX</rfid>
+        <date_entered py:pytype="str">01.01.2001</date_entered>
+        <level py:pytype="str">1</level>
+        <team py:pytype="str">rover</team>
+    </member>
+
+</main>
