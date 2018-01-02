@@ -8,9 +8,11 @@ def _get_string_from_xml(path):
     # read the text
     f = open(path, 'r+')
     lines = f.readlines()
+    lines_wanted = []
     for line in lines:
-        if "#" in line:
+        if "<!--" in line:
             lines.remove(line)
+
     xml = ""
     for line in lines:
         xml += line
@@ -63,7 +65,7 @@ def update_file(member_array, path):
     all_lines = f.readlines()
     comment_lines = []
     for line in all_lines:
-        if "#" in line:
+        if "<!--" in line:
             comment_lines.append(line)
 
     f.close()
@@ -82,6 +84,17 @@ def update_file(member_array, path):
     f.write(text)
     f.close()
 
+def check_existance(query, attribute, path):
+    member_list = from_xml(path)
+    match = False
+    count = 0
+    member_exist = []
+    for members in member_list:
+        if query == members.__getattribute__(attribute):
+            count += 1
+            match = True
+            member_exist.append(members)
+    return member_exist
 
 def add_member(member, path):
     member_array = from_xml(path)
@@ -90,23 +103,47 @@ def add_member(member, path):
         if member.id == members.id:
             match = True
     if not match:
+        print "Adding member id: " + member.id + " " + member.name
         member_array.append(member)
         update_file(member_array, path)
+    else:
+        print "id with "  + member.id +  " already exists. Exiting adding sequence."
 
-def remove_member(member, path):
-    member_array = from_xml(path)
-    match = False
-    found_member = None
-    for members in member_array:
-        if member.id == members.id:
-            match = True
-            found_member = members
-    if match:
-        member_array.remove(found_member)
-        update_file(member_array, path)
+def remove_member(query, attribute, path):
+    list_of_existance = check_existance(query, attribute, path)
+    count = len(list_of_existance)
+    user_i = "y"
+    if count > 1:
+        print "Found " + str(count) + " instances on database with query = " + attribute
+        for i in list_of_existance:
+            print "Name :" + i.name + " " + attribute + ": " + str(i.__getattribute__(attribute))
+        user_i = raw_input("Would you like to delete all instances Answer (y/n)\n")
 
-array = ["123456","Sencer Yazici","senceryazici@gmail.com","0531XXXXXXX","040160XXX","XXX-XXX-XXX","01.01.2001","1","rover"]
+        if "n" in user_i:
+            print "Cancelling deleting sequence"
+            return
+    member_list = from_xml(path)
+    for mathces in list_of_existance:
+        for members in member_list:
+            if mathces.id == members.id:
+                member_list.remove(members)
+                print "Removing member: " + members.name + " " + members.id
+    update_file(member_list, path)
+
+def update_member(member, path):
+    count = len(check_existance(member.id,"id",path))
+    if count == 0:
+        print "No member fount, Exiting..."
+    elif count == 1:
+        remove_member(member.id, "id", path)
+        add_member(member, path)
+
+
+array = ["12345676","sencer yazici","senceryazici@gmail.com","0531XXXXXXX","040160XXX","XXX-XXX-XXX","01.01.2001","1","rover"]
 mem = Member(array)
+
 #to_xml(mem)
 #update_file(member_list, "database.xml")
-add_member(mem, "database.xml")
+# add_member(mem, "database.xml")
+# remove_member("0910", "id", "database.xml")
+update_member(mem, "database.xml")
