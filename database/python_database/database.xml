@@ -26,7 +26,7 @@
         <level py:pytype="str">level</level>
         <team py:pytype="str">team</team>
     </member>
-    
+
     <member xmlns:py="http://codespeak.net/lxml/objectify/pytype" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" py:pytype="TREE">
         <id py:pytype="str">12345676</id>
         <name py:pytype="str">sencer yazici</name>
@@ -38,5 +38,5 @@
         <level py:pytype="str">1</level>
         <team py:pytype="str">rover</team>
     </member>
-    
+
 </main>
