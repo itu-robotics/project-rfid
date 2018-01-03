@@ -28,14 +28,38 @@
     </member>
 
     <member xmlns:py="http://codespeak.net/lxml/objectify/pytype" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" py:pytype="TREE">
-        <id py:pytype="str">12345676</id>
-        <name py:pytype="str">sencer yazici</name>
-        <mail py:pytype="str">senceryazici@gmail.com</mail>
-        <phone py:pytype="str">0531XXXXXXX</phone>
-        <itu_id py:pytype="str">040160XXX</itu_id>
+        <id py:pytype="str">040160027</id>
+        <name py:pytype="str">Enes Demirag</name>
+        <mail py:pytype="str">enesdemirag1@gmail.com</mail>
+        <phone py:pytype="str">05392995440</phone>
+        <itu_id py:pytype="str">040160027</itu_id>
+        <rfid py:pytype="str">000-000-000</rfid>
+        <date_entered py:pytype="str">18.08.2016</date_entered>
+        <level py:pytype="str">3</level>
+        <team py:pytype="str">rov</team>
+    </member>
+
+    <member xmlns:py="http://codespeak.net/lxml/objectify/pytype" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" py:pytype="TREE">
+        <id py:pytype="str">040160449</id>
+        <name py:pytype="str">Ege Saygili</name>
+        <mail py:pytype="str">egesaygili@hotmail.com</mail>
+        <phone py:pytype="str">05343188828</phone>
+        <itu_id py:pytype="str">040160449</itu_id>
         <rfid py:pytype="str">XXX-XXX-XXX</rfid>
-        <date_entered py:pytype="str">01.01.2001</date_entered>
-        <level py:pytype="str">1</level>
+        <date_entered py:pytype="str">20.09.2016</date_entered>
+        <level py:pytype="str">2</level>
+        <team py:pytype="str">rov</team>
+    </member>
+
+    <member xmlns:py="http://codespeak.net/lxml/objectify/pytype" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" py:pytype="TREE">
+        <id py:pytype="str">040160427</id>
+        <name py:pytype="str">Sencer Yazici</name>
+        <mail py:pytype="str">senceryazici@gmail.com</mail>
+        <phone py:pytype="str">05xxxxxxxxx</phone>
+        <itu_id py:pytype="str">040160427</itu_id>
+        <rfid py:pytype="str">XXX-XXX-XXX</rfid>
+        <date_entered py:pytype="str">20.09.2016</date_entered>
+        <level py:pytype="str">2</level>
         <team py:pytype="str">rover</team>
     </member>
 

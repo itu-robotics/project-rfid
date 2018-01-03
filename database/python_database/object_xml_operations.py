@@ -138,12 +138,33 @@ def update_member(member, path):
         remove_member(member.id, "id", path)
         add_member(member, path)
 
+def update_by_attribute(id, value, attribute, path):
+    member_found = check_existance(id, "id", path)
+    mem_temp = member_found[0]
+    mem_temp.__setattr__(attribute, value)
+    mem_temp.print_info()
+    update_member(mem_temp, path)
 
-array = ["12345676","sencer yazici","senceryazici@gmail.com","0531XXXXXXX","040160XXX","XXX-XXX-XXX","01.01.2001","1","rover"]
+def count_members(path):
+    return len(from_xml(path))
+
+def search(query, attr, path):
+    string = "***INFORMATION***\n\n"
+
+    for i in check_existance(query, attr, path):
+        string += i.get_info() + "\n\n"
+    string += "***END OF INFORMATION***\n"
+    return "Found " + str(len(check_existance(query, attr, path))) + " members with search query of, " + attr + ": " + query + "\n" + string
+
+
+array = ["040160427","Sencer Yazici","senceryazici@gmail.com","05xxxxxxxxx","040160427","XXX-XXX-XXX","20.09.2016","2","rover"]
 mem = Member(array)
 
+# print count_members("database.xml")
 #to_xml(mem)
 #update_file(member_list, "database.xml")
 # add_member(mem, "database.xml")
-# remove_member("0910", "id", "database.xml")
-update_member(mem, "database.xml")
+# remove_member("12345676", "id", "database.xml")
+# update_member(mem, "database.xml")
+# update_by_attribute("040160027", "000-000-000", "rfid", "database.xml")
+print search("2", "level", "database.xml")

@@ -25,6 +25,20 @@ class Member(object):
         print "level: " + self.level
         print "team: " + str(self.team)
 
+    def get_info(self):
+        string = ""
+        string += "id: " + self.id
+        string += "\nName: " + self.name
+        string += "\nmail: " + str(self.mail)
+        string += "\nphone: " + self.phone
+        string += "\nitu_id: " + self.itu_id
+        string += "\nrfid: " + self.rfid
+        string += "\ndate_entered: " + self.date_entered
+        string += "\nlevel: " + self.level
+        string += "\nteam: " + str(self.team)
+        return string
+
+
     def serialize(self):
         mails = ""
         for mail in self.mail:
