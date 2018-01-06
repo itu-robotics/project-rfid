@@ -161,6 +161,7 @@ def search(query, attr, path):
 # IDEA: New functions added ? To sort etc..
 
 
+# NOTE: Remove this area
 # TEMP: TEST AREA - To be deleted! >
 # array = ["040160427","Sencer Yazici","senceryazici@gmail.com","05xxxxxxxxx","040160427","XXX-XXX-XXX","20.09.2016","2","rover"]
 # mem = Member(array)
