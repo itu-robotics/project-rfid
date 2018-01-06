@@ -94,6 +94,7 @@ def check_existance(query, attribute, path):
             count += 1
             match = True
             member_exist.append(members)
+
     return member_exist
 
 def add_member(member, path):
@@ -156,10 +157,13 @@ def search(query, attr, path):
     string += "***END OF INFORMATION***\n"
     return "Found " + str(len(check_existance(query, attr, path))) + " members with search query of, " + attr + ": " + query + "\n" + string
 
+# IDEA: define global path, remove path argument from ecach function
+# IDEA: New functions added ? To sort etc..
 
-array = ["040160427","Sencer Yazici","senceryazici@gmail.com","05xxxxxxxxx","040160427","XXX-XXX-XXX","20.09.2016","2","rover"]
-mem = Member(array)
 
+# TEMP: TEST AREA - To be deleted! >
+# array = ["040160427","Sencer Yazici","senceryazici@gmail.com","05xxxxxxxxx","040160427","XXX-XXX-XXX","20.09.2016","2","rover"]
+# mem = Member(array)
 # print count_members("database.xml")
 #to_xml(mem)
 #update_file(member_list, "database.xml")
@@ -167,4 +171,5 @@ mem = Member(array)
 # remove_member("12345676", "id", "database.xml")
 # update_member(mem, "database.xml")
 # update_by_attribute("040160027", "000-000-000", "rfid", "database.xml")
-print search("2", "level", "database.xml")
+# print search("2", "level", "database.xml")
+# TEMP: TEST AREA - To be deleted! <
