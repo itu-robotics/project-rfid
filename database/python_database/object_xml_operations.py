@@ -2,7 +2,11 @@ from lxml import objectify as obj
 from database_struct import Member
 import lxml.etree as serializer
 
+# NOTE: Structure may be updated!
 # iturobotics_id,name_surname,mail,phone,itu-id,rfid,date_entred,level,team1
+
+def struct():
+    pass
 
 def _get_string_from_xml(path):
     # read the text
