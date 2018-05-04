@@ -10,7 +10,7 @@ class SocketServer(socket.socket):
         socket.socket.__init__(self)
         #To silence- address occupied!!
         self.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        self.bind(('0.0.0.0', 8080))
+        self.bind(('0.0.0.0', 9090))
         self.listen(5)
 
     def run(self):
@@ -28,8 +28,10 @@ class SocketServer(socket.socket):
     def accept_clients(self):
         while 1:
             (clientsocket, address) = self.accept()
+            print self.clients
+
             #Adding client to clients list
-            self.clients.append(clientsocket)
+            self.clients.append(clientsocket) # FIXME
             #Client Connected
             self.onopen(clientsocket)
             #Receiving data from client
@@ -82,10 +84,12 @@ class SocketServer(socket.socket):
 class BasicChatServer(SocketServer):
     def __init__(self, on_message):
         self.on_message = on_message
+        self.client_list = []
         SocketServer.__init__(self)
 
     def onmessage(self, client, message):
-        self.on_message(message)
+
+        self.on_message(self,message)
         # print "Received From Client: " + str(message)
         #Sending message to all clients
         # self.send_to_all_except(client, message)
