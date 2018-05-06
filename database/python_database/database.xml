@@ -45,7 +45,7 @@
         <mail py:pytype="str">egesaygili@hotmail.com</mail>
         <phone py:pytype="str">05343188828</phone>
         <itu_id py:pytype="str">040160449</itu_id>
-        <rfid py:pytype="str">XXX-XXX-XXX</rfid>
+        <rfid py:pytype="str">136-4-88-96-180</rfid>
         <date_entered py:pytype="str">20.09.2016</date_entered>
         <level py:pytype="str">4</level>
         <team py:pytype="str">rov</team>
