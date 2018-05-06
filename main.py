@@ -39,7 +39,7 @@ def mes(client, message):
         has_clearance = int(level) <= 2
         _dict = {"id":id, "result":has_clearance}
         json_str = json.dumps(_dict)
-        send_to_client(client, json_str + "\n")
+        send_to_client(client, json_str)
 
 
 
