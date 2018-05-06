@@ -1,6 +1,10 @@
 from server.socket_server import BasicChatServer
 import database.python_database.object_xml_operations as o2x
 import thread
+import json
+import time
+import server.debug as debug
+
 database_path = "/database/database.xml"
 
 class TCPParser(object):
@@ -12,25 +16,44 @@ class TCPParser(object):
     }
 
 
-def mes(serv, message):
+def mes(client, message):
     # Message will be sent to TCPParser
     # To check with dispatcher and execute function.
     # FIXME: Each function has differrent attributes, Cant execute them together.
 
     # TODO: Execute Authentication Test here. Check is user allowed
     # IDEA: Different user types to execute group of functions. Allow some users to execute some etc. remove_member
-    print message
-    #serv.broadcast(raw_input())
-    pass
+    debug.INFO("Socket: " + str(client) + " Message is: " + str(message))
+    data = None
+    try:
+        data = json.loads(message)
+    except ValueError, e:
+        return
+    id = data["id"]
+    type = data["request_type"]
+    content = data["content"]
 
-def send_to_client(serv):
-    while True:
-        serv.broadcast(raw_input() + "\n")
+
+    if type == "door_clearance":
+        level = o2x.get_level(content, "database/python_database/database.xml")
+        has_clearance = int(level) <= 2
+        _dict = {"id":id, "result":has_clearance}
+        json_str = json.dumps(_dict)
+        send_to_client(client, json_str + "\n")
+
+
+
+def send_to_client(client, message):
+    client.send(message + "\n")
+    debug.INFO("Sending Back: " + message)
+
 
 def main():
     server = BasicChatServer(mes)
     thread.start_new_thread(server.run,())
-    send_to_client(server)
+    # send_to_client(server)
+    while True:
+        time.sleep(10)
 
 if __name__ == "__main__":
     main()
