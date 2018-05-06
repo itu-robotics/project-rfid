@@ -28,7 +28,7 @@ class SocketServer(socket.socket):
     def accept_clients(self):
         while 1:
             (clientsocket, address) = self.accept()
-            print self.clients
+            # print self.clients
 
             #Adding client to clients list
             self.clients.append(clientsocket) # FIXME
@@ -39,11 +39,14 @@ class SocketServer(socket.socket):
 
     def recieve(self, client):
         while 1:
-            data = client.recv(1024)
-            if data == '':
+            try:
+                data = client.recv(1024)
+                if data == '':
+                    break
+                #Message Received
+                self.onmessage(client, data.split("\n")[0])
+            except:
                 break
-            #Message Received
-            self.onmessage(client, data)
         #Removing client from clients list
         self.clients.remove(client)
         #Client Disconnected
@@ -52,7 +55,6 @@ class SocketServer(socket.socket):
         client.close()
         #Closing thread
         thread.exit()
-        print self.clients
 
     def send_to_specific_client(self, client, message):
         # Sending message only to a client
@@ -89,7 +91,7 @@ class BasicChatServer(SocketServer):
 
     def onmessage(self, client, message):
 
-        self.on_message(self,message)
+        self.on_message(client, message)
         # print "Received From Client: " + str(message)
         #Sending message to all clients
         # self.send_to_all_except(client, message)
