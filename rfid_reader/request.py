@@ -14,6 +14,6 @@ def send_request(host, port, type, content):
     received = client.recv(100).split("\n")[0]
     print "[ SENDING ] " + json.dumps(_dict)
     print "[ RECEIVED ] " + received
-    data = json.load(received)
+    data = json.loads(received)
     client.close()
-    return data
+    return id, data

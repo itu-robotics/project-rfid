@@ -7,21 +7,24 @@ util = rdr.util()
 util.debug = True
 
 print("No Card Detected")
-card_uid = ""
 
 while True:
-    global card_uid
-    card_uid = ""
-    for i in range(10):
+    if True:
         rdr.wait_for_tag()
         (error, data) = rdr.request()
-        if not error:
-            time.sleep(0.1)
+        if error:
+            pass
+        else:
             (error, uid) = rdr.anticoll()
             if not error:
-                card_uid_new = "-".join(map(str, uid))
-                if card_uid != card_uid_new:
-    		        # Action
-                    card_uid = card_uid_new
-                    print(card_uid)
-                    #request.send_request("localhost", 9090, "door_clearance", card_uid)
+                card_uid = "-".join(map(str, uid))
+                if card_uid != "":
+                    # Action
+                    id, result = request.send_request("localhost", 9090, "door_clearance", card_uid)
+                    if result != "":
+                        if str(result["id"]) == str(id):
+                            if result["result"]:
+                                print "[ OK ] Door Opening."
+                            else:
+                                print "[ DENIED ] Access Denied!"
+                    time.sleep(0.5)

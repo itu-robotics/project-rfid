@@ -163,8 +163,10 @@ def search(query, attr, path):
 
 def get_level(query, attribute, path="database.xml"):
     person = check_existance(query, attribute, path)
-    return person[0].level
-
+    if len(person) > 0:
+        return int(person[0].level)
+    else:
+        return -1
 
 
 # IDEA: define global path, remove path argument from ecach function
