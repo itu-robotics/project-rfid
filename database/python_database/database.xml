@@ -47,7 +47,7 @@
         <itu_id py:pytype="str">040160449</itu_id>
         <rfid py:pytype="str">XXX-XXX-XXX</rfid>
         <date_entered py:pytype="str">20.09.2016</date_entered>
-        <level py:pytype="str">2</level>
+        <level py:pytype="str">4</level>
         <team py:pytype="str">rov</team>
     </member>
 

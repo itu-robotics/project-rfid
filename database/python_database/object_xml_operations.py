@@ -161,6 +161,12 @@ def search(query, attr, path):
     string += "***END OF INFORMATION***\n"
     return "Found " + str(len(check_existance(query, attr, path))) + " members with search query of, " + attr + ": " + query + "\n" + string
 
+def get_level(id, path="database.xml"):
+    person = check_existance(id, "id", path)
+    return person[0].level
+
+
+
 # IDEA: define global path, remove path argument from ecach function
 # IDEA: New functions added ? To sort etc..
 
