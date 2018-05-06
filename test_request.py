@@ -3,7 +3,7 @@ import json
 import random, string
 import time
 import sys
-host = "localhost"
+host = "192.168.2.79"
 port = 9090
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

@@ -161,8 +161,8 @@ def search(query, attr, path):
     string += "***END OF INFORMATION***\n"
     return "Found " + str(len(check_existance(query, attr, path))) + " members with search query of, " + attr + ": " + query + "\n" + string
 
-def get_level(id, path="database.xml"):
-    person = check_existance(id, "id", path)
+def get_level(query, attribute, path="database.xml"):
+    person = check_existance(query, attribute, path)
     return person[0].level
 
 

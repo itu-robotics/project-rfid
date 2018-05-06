@@ -35,8 +35,8 @@ def mes(client, message):
 
 
     if type == "door_clearance":
-        level = o2x.get_level(content, "database/python_database/database.xml")
-        has_clearance = int(level) <= 2
+        level = o2x.get_level(content, "rfid", "database/python_database/database.xml")
+        has_clearance = int(level) <= 3
         _dict = {"id":id, "result":has_clearance}
         json_str = json.dumps(_dict)
         send_to_client(client, json_str)
