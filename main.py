@@ -34,10 +34,9 @@ def mes(client, message):
     content = data["content"]
 
     if type == "door_clearance":
-        level = o2x.get_level(content, "rfid", "database/python_database/database.xml")
+        (level, person) = o2x.get_level(content, "rfid", "database/python_database/database.xml")
         has_clearance = False
         found = level != -1
-
         if found:
             has_clearance = level <= 3
 
@@ -45,11 +44,14 @@ def mes(client, message):
 
         if not found:
             _dict["status"] = "ERROR"
+            _dict["content"] = "User Not Found"
         else:
             _dict["status"] = "OK"
+            _dict["content"] = str(person.name)
 
         json_str = json.dumps(_dict)
         send_to_client(client, json_str)
+
     file = open("request_log.txt", 'a')
     file.write(json.dumps(data) + "\n")
     file.close()
