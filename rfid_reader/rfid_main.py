@@ -20,7 +20,7 @@ while True:
                 card_uid = "-".join(map(str, uid))
                 if card_uid != "":
                     # Action
-                    id, result = request.send_request("localhost", 9090, "door_clearance", card_uid)
+                    id, result = request.send_request("192.168.2.175", 9090, "door_clearance", card_uid)
                     if result != "":
                         if str(result["id"]) == str(id):
                             if result["result"]:
