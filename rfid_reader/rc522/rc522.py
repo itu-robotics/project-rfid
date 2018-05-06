@@ -7,13 +7,18 @@ util = rdr.util()
 util.debug = True
 
 print("No Card Detected")
-rdr.wait_for_tag()
-
-#while True:
-(error, data) = rdr.request()
-if not error:
-    print("Card Detected")
-    (error, uid) = rdr.anticoll()
+card_uid = ""
+while True:
+    global card_uid
+    rdr.wait_for_tag()
+    (error, data) = rdr.request()
     if not error:
-        kart_uid = str(uid[0])+" "+str(uid[1])+" "+str(uid[2])+" "+str(uid[3])+" "+str(uid[4])
-        print(kart_uid)
+        time.sleep(0.1)
+        (error, uid) = rdr.anticoll()
+        if not error:
+            card_uid_new = "-".join(map(str, uid))
+            print card_uid_new
+            if card_uid != card_uid_new:
+		# Action
+                card_uid = card_uid_new
+                #print(card_uid)
