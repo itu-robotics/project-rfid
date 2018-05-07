@@ -1,24 +1,29 @@
 from server.socket_server import BasicChatServer
+import database.python_database.object_xml_operations as o2x
 import thread
 import json
 import time
 import server.debug as debug
-from database.json_database.json_database_operations import PersonObjectManager
-from database.json_database.database_struct import Member
-manager = None
 
-def load_members(path="object.pkl"):
-    global manager
-    list = []
-    manager = PersonObjectManager(list)
-    manager.load()
+database_path = "/database/database.xml"
+
+class TCPParser(object):
+    """Doc"""
+
+    dispatch = {
+        'add_member': o2x.add_member
+        # TODO: Add all functions
+    }
 
 
 def mes(client, message):
-    global manager
-    debug.INFO("Socket: " + str(client) + " Message is: " + str(message))
+    # Message will be sent to TCPParser
+    # To check with dispatcher and execute function.
+    # FIXME: Each function has differrent attributes, Cant execute them together.
 
-    # Load Json Data
+    # TODO: Execute Authentication Test here. Check is user allowed
+    # IDEA: Different user types to execute group of functions. Allow some users to execute some etc. remove_member
+    debug.INFO("Socket: " + str(client) + " Message is: " + str(message))
     data = None
     try:
         data = json.loads(message)
@@ -29,33 +34,34 @@ def mes(client, message):
     content = data["content"]
 
     if type == "door_clearance":
-        person = manager.find(content, "id")
-
-        #print person.serialize()
+        (level, person) = o2x.get_level(content, "rfid", "database/python_database/database.xml")
         has_clearance = False
-
+        found = level != -1
+        if found:
+            has_clearance = level <= 3
 
         _dict = {"id":id, "result":has_clearance}
 
-        if person is None:
+        if not found:
             _dict["status"] = "ERROR"
             _dict["content"] = "User Not Found"
         else:
             _dict["status"] = "OK"
             _dict["content"] = str(person.name)
-            has_clearance = int(person.level) <= 3
-            _dict["result"] = has_clearance
 
         json_str = json.dumps(_dict)
-        client.send(json_str + "\n")
+        send_to_client(client, json_str)
 
     file = open("request_log.txt", 'a')
     file.write(json.dumps(data) + "\n")
     file.close()
 
+def send_to_client(client, message):
+    client.send(message + "\n")
+    debug.INFO("Sending Back: " + message)
+
+
 def main():
-    global manager
-    load_members()
     server = BasicChatServer(mes)
     thread.start_new_thread(server.run,())
     # send_to_client(server)
