@@ -5,6 +5,7 @@ import time
 import server.debug as debug
 from database.json_database.json_database_operations import PersonObjectManager
 from database.json_database.database_struct import Member
+import datetime
 manager = None
 
 def load_members(path="object.pkl"):
@@ -49,8 +50,8 @@ def mes(client, message):
         json_str = json.dumps(_dict)
         client.send(json_str + "\n")
 
-    file = open("request_log.txt", 'a')
-    file.write(json.dumps(data) + "\n")
+    file = open("database/request_log.log", 'a')
+    file.write(datetime.datetime.now().isoformat() + " > [ " + json.dumps(data) + ", " + json_str + " ]\n")
     file.close()
 
 def main():
