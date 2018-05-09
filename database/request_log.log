@@ -7,3 +7,7 @@
 2018-05-07T22:48:53.755809 > [ {"content": "040160427", "request_type": "door_clearance", "id": "WE5ELHS0"}, {"status": "OK", "content": "Sencer Yazici", "id": "WE5ELHS0", "result": true} ]
 2018-05-07T22:49:32.756131 > [ {"content": "040160027", "request_type": "door_clearance", "id": "CCUIESYQ"}, {"status": "OK", "content": "Enes Demirag", "id": "CCUIESYQ", "result": true} ]
 2018-05-07T22:49:41.367223 > [ {"content": "040160023", "request_type": "door_clearance", "id": "CJPIOP34"}, {"status": "ERROR", "content": "User Not Found", "id": "CJPIOP34", "result": false} ]
+2018-05-09T09:34:04.795155 > [ {"content": "040160427", "request_type": "door_clearance", "id": "04Y63SV0"}, {"status": "OK", "content": "Sencer Yazici", "id": "04Y63SV0", "result": true} ]
+2018-05-09T09:34:09.865972 > [ {"content": "040160027", "request_type": "door_clearance", "id": "C8Q1GS83"}, {"status": "OK", "content": "Enes Demirag", "id": "C8Q1GS83", "result": true} ]
+2018-05-09T09:34:11.377985 > [ {"content": "040160027", "request_type": "door_clearance", "id": "BXFXW6ON"}, {"status": "OK", "content": "Enes Demirag", "id": "BXFXW6ON", "result": true} ]
+2018-05-09T09:34:13.065162 > [ {"content": "040160021", "request_type": "door_clearance", "id": "DMS64EKD"}, {"status": "ERROR", "content": "User Not Found", "id": "DMS64EKD", "result": false} ]
