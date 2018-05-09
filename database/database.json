@@ -1,0 +1,4 @@
+[ {"date_entered": "01.01.1991", "name": "Sencer Yazici", "level": "2", "rfid": "444-222-333", "phone": "053XXXXXXXX", "team": "rover", "mail": "senceryazici@gmail.com", "id": "040160427"}|| 
+{"date_entered": "01.01.1998", "name": "Enes Demirag", "level": "3", "rfid": "111-222-333", "phone": "0532XXXXXXX", "team": "rov", "mail": "enesdemirag1@gmail.com", "id": "040160027"}|| 
+{"date_entered": "01.03.1999", "name": "Ege Saygili", "level": "4", "rfid": "222-333-444", "phone": "0532XXXXXXX", "team": "rov", "mail": "egesaygili@gmail.com", "id": "040160450"}|| 
+{"date_entered": "01.12.2000", "name": "Ahmet Hakan Duman", "level": "2", "rfid": "444-555-666", "phone": "0534XXXXXXX", "team": "rover", "mail": "ahd@gmail.com", "id": "040160240"} ]
