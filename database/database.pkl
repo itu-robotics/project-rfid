@@ -1,11 +1,11 @@
 Ä]q(cdatabase.json_database.database_struct
 Member
 q)Åq}q(Udate_enteredqU
-01.01.1991UnameqUSencer YaziciUlevelqU2UrfidqU444-222-333Uphoneq	U053XXXXXXXXUteamq
-UroverUmailqUsenceryazici@gmail.comUidqU	040160427ubh)Åq}q(hU
-01.01.1998hUEnes DemiraghU3hU111-222-333h	U0532XXXXXXXh
-UrovhUenesdemirag1@gmail.comhU	040160027ubh)Åq}q(hU
+01.01.1998UnameqUEnes DemiragUlevelqU3UrfidqU111-222-333Uphoneq	U0532XXXXXXXUteamq
+UrovUmailqUenesdemirag1@gmail.comUidqU	040160027ubh)Åq}q(hU
 01.03.1999hUEge SaygilihU4hU222-333-444h	U0532XXXXXXXh
-UrovhUegesaygili@gmail.comhU	040160450ubh)Åq}q(hU
+UrovhUegesaygili@gmail.comhU	040160450ubh)Åq}q(hU
 01.12.2000hUAhmet Hakan DumanhU2hU444-555-666h	U0534XXXXXXXh
-UroverhUahd@gmail.comhU	040160240ube.
+UroverhUahd@gmail.comhU	040160240ubh)Åq}q(hU
+01.01.1991hUSencer YazicihU2hU444-222-333h	U053XXXXXXXXh
+UroverhUyazicis16@itu.edu.trhU	040160427ube.

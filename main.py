@@ -6,6 +6,7 @@ import server.debug as debug
 from database.json_database.json_database_operations import PersonObjectManager
 from database.json_database.database_struct import Member
 import datetime
+import mailing.mail as mail
 manager = None
 
 def load_members(path="object.pkl"):
@@ -47,6 +48,23 @@ def mes(client, message):
             has_clearance = int(person.level) <= 3
             _dict["result"] = has_clearance
 
+        json_str = json.dumps(_dict)
+        client.send(json_str + "\n")
+    elif type == "singleuse_door_clearance":
+        person = manager.find(content, "id")
+        directorate = manager.find_all("2", "level")
+        directorate = [x.mail for x in directorate]
+        print directorate
+        directorate = ["yazicis16@itu.edu.tr", "sencer_yazici98@hotmail.com"]
+        mail.login()
+        if not mail.mail_for_request("QTR" + id, person, directorate):
+            return
+
+        (return_id, req_result) = mail.read_email_from_gmail(directorate, "QTR" + id)
+        while req_result is None:
+            (return_id, req_result) = mail.read_email_from_gmail(directorate, "QTR" + id)
+
+        _dict = {"id":id, "result":req_result, "status":"OK", "content":person.name}
         json_str = json.dumps(_dict)
         client.send(json_str + "\n")
 
