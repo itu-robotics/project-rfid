@@ -49,7 +49,7 @@ class PersonObjectManager():
         json_str = json_str.replace("]", "")
         json_str = json_str.replace("[", "")
 
-        json_arr = json_str.split("||")
+        json_arr = json_str.split("   ")
         database_arr = []
         for jstr in json_arr:
             direc = json.loads(jstr)
@@ -71,7 +71,7 @@ class PersonObjectManager():
             if count == len(self.persons):
                 json_str += json.dumps(person_dir)
             else:
-                json_str += json.dumps(person_dir) + "|| \n"
+                json_str += json.dumps(person_dir) + "   \n"
 
         json_str += " ]"
         file = open("database/database.json", 'w')
