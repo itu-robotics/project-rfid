@@ -1,6 +1,6 @@
 import socket
 import thread
-
+import time
 # TODO: Client id assignment - To get clients from id (Process id)
 # TODO: Client user type assignmen - To check user priviledges
 
@@ -10,6 +10,7 @@ class SocketServer(socket.socket):
         socket.socket.__init__(self)
         #To silence- address occupied!!
         self.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
         self.bind(('0.0.0.0', 9090))
         self.listen(5)
 
@@ -38,7 +39,10 @@ class SocketServer(socket.socket):
             thread.start_new_thread(self.recieve, (clientsocket,))
 
     def recieve(self, client):
-        while 1:
+        time_step = 0.1
+        timeout = 100
+        c_time = 0
+        while c_time < timeout:
             try:
                 data = client.recv(1024)
                 if data == '':
@@ -46,7 +50,9 @@ class SocketServer(socket.socket):
                 #Message Received
                 self.onmessage(client, data.split("\n")[0])
             except:
-                break
+                pass
+            timeout += time_step
+            time.sleep(time_step)
         #Removing client from clients list
         self.clients.remove(client)
         #Client Disconnected

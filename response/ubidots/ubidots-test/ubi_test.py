@@ -4,25 +4,20 @@ import math
 import random
 
 TOKEN = "A1E-BXteMpvKgoLgsq4eVwz1SWOnwsy2jd"  # Put your TOKEN here
-DEVICE_LABEL = "Demo"  # Put your device label here
-VARIABLE_LABEL_1 = "temperature"  # Put your first variable label here
-VARIABLE_LABEL_2 = "humidity"  # Put your second variable label here
-VARIABLE_LABEL_3 = "position"  # Put your second variable label here
+DEVICE_LABEL = "rfid-door"  # Put your device label here
+VARIABLE_LABEL_1 = "active_response"  # Put your first variable label here
+VARIABLE_LABEL_2 = "active_request"  # Put your second variable label here
 
 
-def build_payload(variable_1, variable_2, variable_3):
+def build_payload(variable_1):
     # Creates two random values for sending data
     value_1 = random.randint(-10, 50)
-    value_2 = random.randint(0, 85)
 
-    # Creates a random gps coordinates
-    lat = random.randrange(34, 36, 1) + \
-        random.randrange(1, 1000, 1) / 1000.0
-    lng = random.randrange(-83, -87, -1) + \
-        random.randrange(1, 1000, 1) / 1000.0
-    payload = {variable_1: value_1,
-               variable_2: value_2,
-               variable_3: {"value": 1, "context": {"lat": lat, "lng": lng}}}
+    payload = {
+        variable_1: {"value":value_1,
+            "context":{"id":"QTR34BC", "clearance":True}
+            }
+        }
 
     return payload
 
@@ -53,8 +48,7 @@ def post_request(payload):
 
 
 def main():
-    payload = build_payload(
-        VARIABLE_LABEL_1, VARIABLE_LABEL_2, VARIABLE_LABEL_3)
+    payload = build_payload(VARIABLE_LABEL_1)
 
     print("[INFO] Attemping to send data")
     post_request(payload)
